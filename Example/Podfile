@@ -1,0 +1,10 @@
+use_frameworks!
+
+target 'DrawerMenu' do
+  pod 'DrawerMenu', :path => '../'
+
+  target 'DrawerMenuTests' do
+    inherit! :search_paths
+
+  end
+end

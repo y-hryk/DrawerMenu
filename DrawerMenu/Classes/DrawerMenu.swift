@@ -6,7 +6,7 @@
 import UIKit
 
 extension UIViewController {
-    func drawer() -> DrawerMenu? {
+    public func drawer() -> DrawerMenu? {
         var viewController: UIViewController? = self
         while viewController != nil {
             if viewController is DrawerMenu {

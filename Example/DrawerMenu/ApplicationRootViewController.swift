@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import DrawerMenu
 
 class ApplicationRootViewController: UIViewController {
 
