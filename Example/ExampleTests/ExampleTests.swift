@@ -1,15 +1,15 @@
 //
-//  DrawerMenuTests.swift
-//  DrawerMenuTests
+//  ExampleTests.swift
+//  ExampleTests
 //
-//  Created by Hiroyuki Yamaguchi on 2019/07/10.
+//  Created by h.yamguchi on 2019/07/10.
 //  Copyright © 2019 y-hryk. All rights reserved.
 //
 
 import XCTest
-@testable import DrawerMenu
+@testable import Example
 
-class DrawerMenuTests: XCTestCase {
+class ExampleTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

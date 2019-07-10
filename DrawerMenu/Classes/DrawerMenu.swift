@@ -5,8 +5,8 @@
 
 import UIKit
 
-extension UIViewController {
-    public func drawer() -> DrawerMenu? {
+public extension UIViewController {
+    func drawer() -> DrawerMenu? {
         var viewController: UIViewController? = self
         while viewController != nil {
             if viewController is DrawerMenu {
@@ -19,7 +19,7 @@ extension UIViewController {
 }
 
 public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
-    
+
     public enum PanGestureType { case pan, screenEdge, none }
     public enum Side { case left, right }
     public enum AutomaticallyOpenClose {
@@ -34,7 +34,7 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
             }
         }
     }
-    
+
     public var leftMenuWidth: CGFloat = UIScreen.main.bounds.width * 0.8 {
         didSet { changeLeftMenuWidth() }
     }
@@ -56,16 +56,16 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
     }
     public private(set) var isOpenLeft: Bool = false
     public private(set) var isOpenRight: Bool = false
-    
+
     public var centerViewController: UIViewController
     public var leftViewController: UIViewController?
     public var rightViewContoller: UIViewController?
-    
+
     internal var centerContainerView = UIView(frame: .zero)
     internal var leftContainerView: UIView?
     internal var rightContainerView: UIView?
     internal let opacityView = UIView(frame: .zero)
-    
+
     private enum MenuStatus: Int { case open = 1, close = 0 }
     private var startLocation: CGPoint = .zero
     private var leftBeganStatus: Bool = false
@@ -73,7 +73,7 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
     private var panGestureRecognizer: UIPanGestureRecognizer?
     private var leftEdgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer?
     private var rightEdgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer?
-    
+
     private var leftProgress: CGFloat {
         get {
             if leftViewController == nil { return 0 }
@@ -85,7 +85,7 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
             style.leftTransition(menuWidth: leftMenuWidth, progress: ratio, drawer: self)
         }
     }
-    
+
     private var rightProgress: CGFloat {
         get {
             if rightViewContoller == nil { return 0 }
@@ -97,47 +97,47 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
             style.rightTransition(menuWidth: rightMenuWidth, progress: ratio, drawer: self)
         }
     }
-    
+
     public init(center: UIViewController, left: UIViewController? = nil, right: UIViewController? = nil) {
-        
+
         centerViewController = center
         leftViewController = left
         rightViewContoller = right
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override public func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         addTapGesture()
         addPanGesture(type: panGestureType)
         changeStyle(style: style)
-        
+
     }
-    
+
     // MARK: Public
     public func replace(center controller: UIViewController) {
-        
+
         centerViewController.view.removeFromSuperview()
         centerViewController.removeFromParent()
         centerViewController.willMove(toParent: self)
-        
+
         centerViewController = controller
-        
+
         addChild(centerViewController)
         centerContainerView.addSubview(centerViewController.view)
         centerViewController.didMove(toParent: self)
-        
+
         centerContainerView.addSubview(opacityView)
-        
+
         close(to: .left)
         close(to: .right)
     }
-    
+
     public func open(to side: Side, animated: Bool = true, completion: (() -> Void)? = nil) {
         if side == .left {
             updateLeftProgress(status: .open, animated: animated) { [weak self] in
@@ -154,7 +154,7 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
             }
         }
     }
-    
+
     public func close(to side: Side, animated: Bool = true, completion: (() -> Void)? = nil) {
         if side == .left {
             updateLeftProgress(status: .close, animated: animated) { [weak self] in
@@ -171,60 +171,60 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
             }
         }
     }
-    
+
     // MAKR: Private
     private func setupViews() {
-        
+
         view.backgroundColor = .white
-        
+
         // MainViewController
         centerContainerView.frame = view.frame
         centerContainerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         view.addSubview(centerContainerView)
-        
+
         addChild(centerViewController)
         centerContainerView.addSubview(centerViewController.view)
         centerViewController.didMove(toParent: self)
-        
+
         // LeftViewController
         if let left = leftViewController {
             var frame = left.view.bounds
             frame.size.width = leftMenuWidth
             left.view.frame = frame
             left.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-            
+
             leftContainerView = UIView()
             leftContainerView?.frame = frame
             leftContainerView?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
             view.addSubview(leftContainerView!)
-            
+
             addChild(left)
             leftContainerView?.addSubview(left.view)
             left.didMove(toParent: self)
-            
+
             close(to: .left, animated: false, completion: nil)
         }
-        
+
         // RightViewContoller
         if let right = rightViewContoller {
-            
+
             var frame = right.view.bounds
             frame.size.width = rightMenuWidth
             right.view.frame = frame
             right.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-            
+
             rightContainerView = UIView()
             rightContainerView?.frame = frame
             rightContainerView?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
             view.addSubview(rightContainerView!)
-            
+
             addChild(right)
             rightContainerView?.addSubview(right.view)
             right.didMove(toParent: self)
-            
+
             close(to: .right, animated: false, completion: nil)
         }
-        
+
         // opacityView
         opacityView.frame = centerViewController.view.frame
         opacityView.backgroundColor = .black
@@ -232,9 +232,9 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
         centerContainerView.addSubview(opacityView)
         opacityView.alpha = 0.0
     }
-    
+
     private func changeLeftMenuWidth() {
-    
+
         if let left = leftContainerView {
             var frame = left.bounds
             frame.size.width = leftMenuWidth
@@ -247,9 +247,9 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
             isOpenLeft ? open(to: .left) : close(to: .left)
         }
     }
-    
+
     private func changeRightMenuWidth() {
-        
+
         if let right = rightContainerView {
             var frame = right.bounds
             frame.size.width = rightMenuWidth
@@ -262,11 +262,11 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
             isOpenRight ? open(to: .right) : close(to: .right)
         }
     }
-    
+
     private func changeStyle(style: DrawerMenuStyle) {
-        
+
         centerContainerView.transform = CGAffineTransform.identity
-        
+
         style.removeShadow(view: centerContainerView)
         style.removeShadow(view: leftContainerView)
         style.removeShadow(view: rightContainerView)
@@ -274,7 +274,7 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
         close(to: .left, animated: false)
         close(to: .right, animated: false)
     }
-    
+
     private func addTapGesture() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(opacityViewPressed))
         opacityView.addGestureRecognizer(tapGestureRecognizer)
@@ -292,7 +292,7 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
                 view.addGestureRecognizer(panGestureRecognizer!)
             }
         case .screenEdge:
-            
+
             if leftEdgePanGestureRecognizer == nil {
                 leftEdgePanGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self,
                                                                                 action: #selector(leftEdgePanGestureCallback(gestureRecognizer:)))
@@ -302,7 +302,7 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
                 leftEdgePanGestureRecognizer?.delegate = self
                 view.addGestureRecognizer(leftEdgePanGestureRecognizer!)
             }
-            
+
             if rightEdgePanGestureRecognizer == nil {
                 rightEdgePanGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self,
                                                                                  action: #selector(rightEdgePanGestureCallback(gestureRecognizer:)))
@@ -315,9 +315,9 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
         case .none: break
         }
     }
-    
+
     private func removeGesture() {
-        
+
         if leftEdgePanGestureRecognizer != nil {
             view.removeGestureRecognizer(leftEdgePanGestureRecognizer!)
             leftEdgePanGestureRecognizer = nil
@@ -331,16 +331,16 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
             panGestureRecognizer = nil
         }
     }
-    
+
     private func updateLeftProgress(status: MenuStatus, animated: Bool, completion: (() -> Void)? = nil) {
-       
+
         let isAppearing = status == .open ? true : false
         let callLifeCycle = callViewControllerLifeCycle(side: .left, status: status)
         if callLifeCycle {
             leftViewController?.beginAppearanceTransition(isAppearing, animated: false)
         }
         if animated {
-            
+
             UIView.animate(withDuration: TimeInterval(animationDuration),
                            delay: 0.0, options: .curveEaseInOut,
                            animations: { [weak self] in
@@ -351,7 +351,7 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
                     self?.leftViewController?.endAppearanceTransition()
                 }
             })
-            
+
         } else {
             leftProgress = CGFloat(status.rawValue)
             completion?()
@@ -360,9 +360,9 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
             }
         }
     }
-    
+
     private func updateRightProgress(status: MenuStatus, animated: Bool, completion: (() -> Void)? = nil) {
-        
+
         let isAppearing = status == .open ? true : false
         let callLifeCycle = callViewControllerLifeCycle(side: .right, status: status)
         if callLifeCycle {
@@ -387,24 +387,24 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
             }
         }
     }
-    
+
     private func callViewControllerLifeCycle(side: Side, status: MenuStatus) -> Bool {
         var isOpen: Bool = false
         if side == .left { isOpen = isOpenLeft }
         if side == .right { isOpen = isOpenRight }
-        
+
         if status == .open {
             return !(isOpen && status == .open)
         } else {
             return !(!isOpen && status == .close)
         }
     }
-    
+
     private func rightMenuGestureHandle(gesture: UIPanGestureRecognizer) {
 
         if isOpenLeft { return }
         let location = gesture.location(in: view)
-        
+
         switch gesture.state {
         case .changed:
             let distance = rightBeganStatus ? location.x - startLocation.x : startLocation.x - location.x
@@ -427,15 +427,15 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
         default: break
         }
     }
-    
+
     private func leftMenuGestureHandle(gesture: UIPanGestureRecognizer) {
-        
+
         if isOpenRight { return }
-        
+
         let location = gesture.location(in: view)
         switch gesture.state {
         case .changed:
-            
+
             let distance = leftBeganStatus ? startLocation.x - location.x : location.x - startLocation.x
             if distance >= 0 {
                 let ratio = distance / leftMenuWidth
@@ -445,7 +445,7 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
             if distance < 0 && !isOpenLeft {
                 gesture.state = .ended
             }
-            
+
         case .ended, .cancelled, .failed:
             if leftBeganStatus {
                 leftProgress >= (1 - automaticallyOpenClose.percentage()) ? open(to: .left) : close(to: .left)
@@ -457,7 +457,7 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
         default: break
         }
     }
-    
+
     private func setupGestureBegan(gestureRecognizer: UIPanGestureRecognizer) {
         let location = gestureRecognizer.location(in: view)
         switch gestureRecognizer.state {
@@ -468,33 +468,33 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
         default: break
         }
     }
-    
+
     // MARK: Selector
     @objc private func opacityViewPressed() {
-        
+
         if !closeTapGesturesEnabled { return }
         if isOpenLeft || isOpenRight {
             close(to: .left)
             close(to: .right)
         }
     }
-    
+
     @objc private func leftEdgePanGestureCallback(gestureRecognizer: UIPanGestureRecognizer) {
-      
+
         setupGestureBegan(gestureRecognizer: gestureRecognizer)
         leftMenuGestureHandle(gesture: gestureRecognizer)
     }
-    
+
     @objc private func rightEdgePanGestureCallback(gestureRecognizer: UIPanGestureRecognizer) {
 
         setupGestureBegan(gestureRecognizer: gestureRecognizer)
         rightMenuGestureHandle(gesture: gestureRecognizer)
     }
-    
+
     @objc private func panGestureCallback(gestureRecognizer: UIPanGestureRecognizer) {
-        
+
         setupGestureBegan(gestureRecognizer: gestureRecognizer)
-        
+
         let location = gestureRecognizer.location(in: view)
         let diff = location.x - startLocation.x
 
@@ -515,13 +515,13 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
             }
         }
     }
-    
+
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return shouldRecognizeSimultaneously
     }
-    
+
     // MARK: Override
     public override var preferredStatusBarStyle: UIStatusBarStyle {
-        return self.centerViewController.preferredStatusBarStyle 
+        return self.centerViewController.preferredStatusBarStyle
     }
 }

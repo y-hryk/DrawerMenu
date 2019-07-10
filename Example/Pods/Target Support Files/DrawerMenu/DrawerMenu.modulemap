@@ -1,0 +1,6 @@
+framework module DrawerMenu {
+  umbrella header "DrawerMenu-umbrella.h"
+
+  export *
+  module * { export * }
+}

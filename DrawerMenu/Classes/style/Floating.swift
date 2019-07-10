@@ -14,6 +14,8 @@ public struct Floating: DrawerMenuStyle {
     public var shadowOpacity: CGFloat = 0.4
     public var shadowOffset: CGSize = CGSize(width: 0, height: 0)
     
+    public init() {}
+    
     public func setup(drawer: DrawerMenu) {
         drawer.view.bringSubviewToFront(drawer.centerContainerView)
         addShadow(view: drawer.centerContainerView,

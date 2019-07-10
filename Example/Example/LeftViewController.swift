@@ -2,9 +2,6 @@
 //  LeftViewController.swift
 //  Drawer_Example
 //
-//  Created by Hiroyuki Yamaguchi on 2019/06/19.
-//  Copyright © 2019 CocoaPods. All rights reserved.
-//
 
 import UIKit
 import DrawerMenu

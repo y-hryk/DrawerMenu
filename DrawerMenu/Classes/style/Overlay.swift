@@ -13,6 +13,8 @@ public struct Overlay: DrawerMenuStyle {
     public var shadowRadius: CGFloat = 2.0
     public var shadowOffset: CGSize = CGSize(width: 0, height: 0)
     
+    public init() {}
+    
     public func setup(drawer: DrawerMenu) {
         drawer.view.sendSubviewToBack(drawer.centerContainerView)
         addShadow(view: drawer.leftContainerView,

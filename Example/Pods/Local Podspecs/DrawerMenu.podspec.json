@@ -1,0 +1,24 @@
+{
+  "name": "DrawerMenu",
+  "version": "0.9.0",
+  "summary": "A short description of DrawerMenu.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/y-hryk/DrawerMenu",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "y-hryk": "dev.hy630823@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/y-hryk/DrawerMenu.git",
+    "tag": "0.9.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "swift_versions": "5.0",
+  "source_files": "DrawerMenu/Classes/**/*",
+  "swift_version": "5.0"
+}

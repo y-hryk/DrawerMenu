@@ -1,9 +1,9 @@
 use_frameworks!
 
-target 'DrawerMenu' do
+target 'Example' do
   pod 'DrawerMenu', :path => '../'
 
-  target 'DrawerMenuTests' do
+  target 'ExampleTests' do
     inherit! :search_paths
 
   end
