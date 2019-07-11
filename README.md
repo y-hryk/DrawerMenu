@@ -2,7 +2,7 @@
 DrawerMenu
 </H1>
 <p align="center">
-Simple drawermenu<br>
+Simple Drawermenu<br>
 Correspond to left right
 </p>
 
@@ -79,7 +79,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-### Access the drawermenu from the view controller
+### Access the drawermenu from the viewcontroller
 ```swift
 import DrawerMenu
 
@@ -122,7 +122,7 @@ You can customize the style.
 ```swift
 import DrawerMenu
 
-class CustomStyle: DrawerMenuStyle {
+struct CustomStyle: DrawerMenuStyle {
 
     func setup(drawer: DrawerMenu) {
       // Initialize. Change the hierarchy of view
