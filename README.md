@@ -10,13 +10,10 @@ DrawerMenu
 </p>
 
 ## Demo
-| Slide                      | SlideIn                      | Overlay                      |
-|:-------------------------- |:---------------------------- | ---------------------------- |
-| ![](Screenshots/slide.gif) | ![](Screenshots/slideIn.gif) | ![](Screenshots/overlay.gif) |
+| Slide                      | SlideIn                      | Overlay                      | Parallax                      | Floating                      |
+|:-------------------------- |:---------------------------- | ---------------------------- | ----------------------------- | ----------------------------- |
+| ![](Screenshots/slide.gif) | ![](Screenshots/slideIn.gif) | ![](Screenshots/overlay.gif) | ![](Screenshots/parallax.gif) | ![](Screenshots/floating.gif) |
 
-| Parallax    | Floating     |
-| :------------- | :------------- |
-| ![](Screenshots/parallax.gif)       | ![](Screenshots/floating.gif)        |
 
 ## Requirements
 - iOS 10.0 or later
