@@ -1,6 +1,10 @@
 <H1 align="center">
 DrawerMenu
 </H1>
+<p align="center">
+Simple drawermenu<br>
+Correspond to left right
+</p>
 
 <p align="center">
 <a href="https://cocoapods.org/pods/DrawerMenu"><img alt="Version" src="https://img.shields.io/cocoapods/v/DrawerMenu.svg?style=flat"></a>
@@ -26,18 +30,123 @@ DrawerMenu
 
 #### Cocoapods
 
-DrawerMenu is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
 ```ruby
 pod 'DrawerMenu'
 ```
 
 #### Carthage
 
-## Author
+## Usage
 
-y-hryk, dev.hy630823@gmail.com
+### Setup
+##### To the child of viewcontroller
+
+```swift
+import DrawerMenu
+
+class ApplicationRootViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let left = UIStoryboard(name: "Left", bundle: nil).instantiateInitialViewController()!
+        let center = UIStoryboard(name: "Center", bundle: nil).instantiateInitialViewController()!
+
+        let drawer = DrawerMenu(center: center, left: left)
+        addChild(drawer)
+        view.addSubview(drawer.view)
+        drawer.didMove(toParent: self)
+    }
+}
+```
+
+##### RootViewController
+```swift
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    // Override point for customization after application launch.
+
+    window = UIWindow(frame: UIScreen.main.bounds)
+    window?.backgroundColor = .white
+
+    let left = UIStoryboard(name: "Left", bundle: nil).instantiateInitialViewController()!
+    let center = UIStoryboard(name: "Center", bundle: nil).instantiateInitialViewController()!
+
+    let drawer = DrawerMenu(center: center, left: left)
+    window?.rootViewController = drawer
+    window?.makeKeyAndVisible()
+
+    return true
+}
+```
+
+### Access the drawermenu from the view controller
+```swift
+import DrawerMenu
+
+drawer()?.open(to: .left)
+```
+
+### Open or Close
+```swift
+import DrawerMenu
+
+// method call
+drawer()?.open(to: .left)
+drawer()?.open(to: .left, animated: true, completion: {
+
+})
+drawer()?.close(to: .right)
+drawer()?.close(to: .right, animated: true, completion: {
+
+})
+
+// open or close status
+drawer()?.isOpenLeft
+drawer()?.isOpenRight
+
+// panGesture settings
+drawer()?.panGestureType = .none
+drawer()?.panGestureType = .pan
+drawer()?.panGestureType = .screenEdge
+```
+
+### Style
+Please refer to each style class for details such as shadows and details
+```swift
+let drawer = DrawerMenu(center: center, left: left)
+drawer.style = SlideIn()
+```
+
+### Custom style
+You can customize the style.
+```swift
+import DrawerMenu
+
+class CustomStyle: DrawerMenuStyle {
+
+    func setup(drawer: DrawerMenu) {
+      // Initialize. Change the hierarchy of view
+    }
+
+    func leftProgress(menuWidth: CGFloat, drawer: DrawerMenu) -> CGFloat {
+        // Current progress of left menu.
+        // open = 1, close = 0
+    }
+
+    func rightProgress(menuWidth: CGFloat, drawer: DrawerMenu) -> CGFloat {
+        // Current progress of right menu.
+        // open = 1, close = 0
+    }
+
+    func leftTransition(menuWidth: CGFloat, progress: CGFloat, drawer: DrawerMenu) {
+        // Operate the left menu
+    }
+
+    func rightTransition(menuWidth: CGFloat, progress: CGFloat, drawer: DrawerMenu) {
+        // Operate the right menu
+    }
+}
+```
 
 ## License
 

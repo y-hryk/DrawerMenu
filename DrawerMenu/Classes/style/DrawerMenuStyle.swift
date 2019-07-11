@@ -13,7 +13,7 @@ public protocol DrawerMenuStyle {
     func rightTransition(menuWidth: CGFloat, progress: CGFloat, drawer: DrawerMenu)
 }
 
-extension DrawerMenuStyle {
+public extension DrawerMenuStyle {
     func addShadow(view: UIView?, color: UIColor, radius: CGFloat, opacity: CGFloat, offset: CGSize) {
         view?.layer.shadowColor = color.cgColor
         view?.layer.shadowRadius = radius
