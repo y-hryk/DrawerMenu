@@ -3,13 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		152DFAA022D8816900CDC4BF /* DrawerMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 152DFA9E22D8816900CDC4BF /* DrawerMenu.h */; };
-		152DFAA122D8816900CDC4BF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 152DFA9F22D8816900CDC4BF /* Info.plist */; };
-		152DFAAC22D881C300CDC4BF /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 152DFAA322D881C300CDC4BF /* .gitkeep */; };
+		152DFAA022D8816900CDC4BF /* DrawerMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 152DFA9E22D8816900CDC4BF /* DrawerMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		152DFAAD22D881C300CDC4BF /* SlideIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152DFAA522D881C300CDC4BF /* SlideIn.swift */; };
 		152DFAAE22D881C300CDC4BF /* Parallax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152DFAA622D881C300CDC4BF /* Parallax.swift */; };
 		152DFAAF22D881C300CDC4BF /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152DFAA722D881C300CDC4BF /* Slide.swift */; };
@@ -203,7 +201,6 @@
 				59D1C633F74E4698F3D59675 /* Pods-Example.debug.xcconfig */,
 				A086C138D56AF91DA1EAF856 /* Pods-Example.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -323,8 +320,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				152DFAA122D8816900CDC4BF /* Info.plist in Resources */,
-				152DFAAC22D881C300CDC4BF /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,6 +576,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "DrawerMenu/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -605,6 +601,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "DrawerMenu/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
