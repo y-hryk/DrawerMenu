@@ -67,6 +67,10 @@ class CenterViewController: UITableViewController {
             selectedGestureRow = indexPath.row
         }
         
+        let vc = UIViewController()
+        let nc = UINavigationController(rootViewController: vc)
+        drawer()?.replace(center: nc)
+        
         tableView.reloadData()
     }
 }

@@ -35,6 +35,9 @@ pod 'DrawerMenu'
 ```
 
 #### Carthage
+```
+github "y-hryk/DrawerMenu"
+```
 
 ## Usage
 
@@ -108,6 +111,13 @@ drawer()?.isOpenRight
 drawer()?.panGestureType = .none
 drawer()?.panGestureType = .pan
 drawer()?.panGestureType = .screenEdge
+```
+
+### Replace CenterViewController
+```swift
+let vc = UIViewController()
+let nc = UINavigationController(rootViewController: vc)
+drawer()?.replace(center: nc)
 ```
 
 ### Style
