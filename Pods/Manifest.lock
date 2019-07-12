@@ -1,0 +1,16 @@
+PODS:
+  - DrawerMenu (1.0.0)
+
+DEPENDENCIES:
+  - DrawerMenu (from `.`)
+
+EXTERNAL SOURCES:
+  DrawerMenu:
+    :path: "."
+
+SPEC CHECKSUMS:
+  DrawerMenu: 6cf908498aa10f6cf1ef5c2bd83839b4fc11b368
+
+PODFILE CHECKSUM: a1cab519ce0615883aa3bdda16e9db6731aa09ea
+
+COCOAPODS: 1.7.4

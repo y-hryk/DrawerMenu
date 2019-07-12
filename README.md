@@ -1,10 +1,10 @@
 <H1 align="center">
 DrawerMenu
 </H1>
-<p align="center">
-Simple Drawermenu<br>
+<H4 align="center">
+Simple DrawerMenu<br>
 Correspond to left right
-</p>
+</H4>
 
 <p align="center">
 <a href="https://cocoapods.org/pods/DrawerMenu"><img alt="Version" src="https://img.shields.io/cocoapods/v/DrawerMenu.svg?style=flat"></a>
@@ -35,6 +35,9 @@ pod 'DrawerMenu'
 ```
 
 #### Carthage
+```
+github "y-hryk/DrawerMenu"
+```
 
 ## Usage
 
@@ -108,6 +111,13 @@ drawer()?.isOpenRight
 drawer()?.panGestureType = .none
 drawer()?.panGestureType = .pan
 drawer()?.panGestureType = .screenEdge
+```
+
+### Replace CenterViewController
+```swift
+let vc = UIViewController()
+let nc = UINavigationController(rootViewController: vc)
+drawer()?.replace(center: nc)
 ```
 
 ### Style
