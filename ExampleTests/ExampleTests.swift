@@ -2,7 +2,7 @@
 //  ExampleTests.swift
 //  ExampleTests
 //
-//  Created by h.yamguchi on 2019/07/10.
+//  Created by Hiroyuki Yamaguchi on 2019/07/12.
 //  Copyright © 2019 y-hryk. All rights reserved.
 //
 
