@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'DrawerMenu'
   s.version          = '1.0.0'
-  s.summary          = 'A simple drawer menu '
+  s.summary          = 'Simple DrawerMenu '
   s.homepage         = 'https://github.com/y-hryk/DrawerMenu'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -20,11 +20,4 @@ Pod::Spec.new do |s|
   s.swift_version = '5.0'
   s.source_files = 'DrawerMenu/Classes/**/*'
 
-  # s.resource_bundles = {
-  #   'DrawerMenu' => ['DrawerMenu/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
