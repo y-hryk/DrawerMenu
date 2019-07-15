@@ -23,6 +23,17 @@ class CenterViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Left",
+                                                            style: .done,
+                                                            target: self,
+                                                            action: #selector(leftOpen))
+        navigationItem.leftBarButtonItem?.tintColor = .white
+    }
+    
+    // MARK: Selector
+    @objc func leftOpen() {
+        drawer()?.open(to: .left)
     }
     
     // MARK: Private
@@ -66,10 +77,6 @@ class CenterViewController: UITableViewController {
             drawer()?.panGestureType = getGestureType(row: indexPath.row)
             selectedGestureRow = indexPath.row
         }
-        
-        let vc = UIViewController()
-        let nc = UINavigationController(rootViewController: vc)
-        drawer()?.replace(center: nc)
         
         tableView.reloadData()
     }
