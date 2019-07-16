@@ -26,8 +26,6 @@ Correspond to left right
 
 ## Installation
 
-#### Manually
-
 #### Cocoapods
 
 ```ruby
