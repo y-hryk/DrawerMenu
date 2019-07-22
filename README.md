@@ -7,10 +7,21 @@ Correspond to left right
 </H4>
 
 <p align="center">
-<a href="https://cocoapods.org/pods/DrawerMenu"><img alt="Version" src="https://img.shields.io/cocoapods/v/DrawerMenu.svg?style=flat"></a>
-<a href=""><img alt="Liscence" src="https://img.shields.io/cocoapods/l/Drawer.svg?style=flat"></a>
-<a href="https://developer.apple.com/"><img alt="Platform" src="https://img.shields.io/badge/platform-iOS-green.svg"/></a>
-<a href="https://developer.apple.com/swift"><img alt="Swift" src="https://img.shields.io/badge/language-Swift-orange.svg"/></a>
+  <a href="https://cocoapods.org/pods/DrawerMenu">
+    <img alt="Cocoapods" src="https://img.shields.io/cocoapods/v/DrawerMenu.svg?style=flat">
+  </a>
+  <a href="https://github.com/Carthage/Carthage">
+    <img alt="Carthage" src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat">
+  </a>
+  <a href="https://developer.apple.com/swift">
+    <img alt="Swift" src="https://img.shields.io/badge/language-Swift-orange.svg"/>
+  </a>
+  <a href="https://developer.apple.com/">
+    <img alt="Platform" src="https://img.shields.io/badge/platform-iOS-green.svg"/>
+  </a>
+  <a href="">
+    <img alt="Liscence" src="https://img.shields.io/cocoapods/l/Drawer.svg?style=flat">
+  </a>
 </p>
 
 ## Demo

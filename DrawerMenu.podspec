@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DrawerMenu'
-  s.version          = '1.0.0'
-  s.summary          = 'Simple DrawerMenu '
+  s.version          = '1.0.1'
+  s.summary          = 'Simple DrawerMenu'
   s.homepage         = 'https://github.com/y-hryk/DrawerMenu'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
