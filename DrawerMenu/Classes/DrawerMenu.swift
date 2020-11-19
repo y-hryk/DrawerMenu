@@ -118,7 +118,11 @@ public class DrawerMenu: UIViewController, UIGestureRecognizerDelegate {
         changeStyle(style: style)
 
     }
-
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        changeRightMenuWidth()
+        changeLeftMenuWidth()
+    }
     // MARK: Public
     public func replace(center controller: UIViewController) {
 
